@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[24],{97:function(a){a.exports=JSON.parse('{"allTagsPath":"/flutterindonesia/blog/tags","slug":"hola","name":"hola","count":1,"permalink":"/flutterindonesia/blog/tags/hola"}')}}]);

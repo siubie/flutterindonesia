@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{83:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome","permalink":"/flutterindonesia/blog/welcome"},{"title":"Hello","permalink":"/flutterindonesia/blog/hello-world"},{"title":"Hola","permalink":"/flutterindonesia/blog/hola"}]}')}}]);
