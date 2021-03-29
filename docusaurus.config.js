@@ -9,10 +9,9 @@ module.exports = {
   favicon: "img/favicon.ico",
   organizationName: "siubie", // Usually your GitHub org/user name.
   projectName: "flutterindonesia", // Usually your repo name.
-  plugins: ["@docusaurus/plugin-google-analytics"],
   themeConfig: {
     googleAnalytics: {
-      trackingID: "G-B7SVSMJPGV",
+      trackingID: "G-2FWC3FPY25",
       // Optional fields.
       anonymizeIP: true, // Should IPs be anonymized?
     },
