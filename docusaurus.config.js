@@ -10,6 +10,9 @@ module.exports = {
   organizationName: "siubie", // Usually your GitHub org/user name.
   projectName: "flutterindonesia", // Usually your repo name.
   themeConfig: {
+    prism: {
+      additionalLanguages: ["dart"],
+    },
     googleAnalytics: {
       trackingID: "G-2FWC3FPY25",
       // Optional fields.
