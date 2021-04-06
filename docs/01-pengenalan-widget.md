@@ -20,6 +20,8 @@ Proses merender ulang ini ditangani oleh framework flutter secara internal. Peru
 
 
 ## Hello World
+Untuk mencoba hello world project mari dimulai dari new flutter project dan lakukan clean up semua starter code yang diberikan oleh flutter. Kemudian perhatikan lah kode program dibawah ini.
+
 ```dart title="main.dart"
 import 'package:flutter/material.dart';
 
@@ -39,11 +41,106 @@ Semua aplikasi flutter pada dasarnya adalah sebuah widget yang dijalankan oleh f
 Flutter framework akan mengambil root widget ini dan memaksa tampilannya memenuhi seluruh screen, jika mengikuti code yang ada di atas maka tulisan text hello world ini akan berada di tengah screen karena widget center yang menjadi parent nya akan di strech oleh flutter memenuhi screen dan text berada di tengah (karena widget center sifatnya memposisikan child widget ke posisi tengah dari parent nya). Khusus untuk kasus ini text direction harus di tuliskan secara eksplisit. Ada widget default yang istimewa yang dapat menghandle kasus kasus seperti ini contohnya MaterialApp yang nantinya akan membantu anda membuat aplikasi dengan tampilan material app dan menambahkan SafeArea untuk menghandle display widget lain ke dalam screen mobile.
 
 ![Hello World](/img/notes2.png)
+
 Ketika membuat aplikasi nanti kita akan membuat sebuah widget custom yang dapat terdiri dari widget widget default dan dapat juga berupa widget baru yang merupakan subclass dari StatelessWidget atau StatefullWidget, untuk memilih stateless atau statefull tergantung pada kebutuhan widget baru yang akan anda buat.
 
 Untuk membuat sebuah widget baru caranya sangat sederhana cukup dengan extend Statelss atau Statefull widget kemudian override implementasi pada method build(), nah di dalam override function nya inilah kita dapat membuat ui dengan berbagai macam default widget yang di sediakan sehingga dapat membentuk sebuah widget dengan ui yang unik.
 
 ## Basic Widgets
+Flutter sudah menyediakan banyak widget basic yang dapat anda gunakan untuk membuat UI yang unik. Dari sekian banyak widget ada beberapa widget yang sering digunakan antara lain: 
+
+### Text
+Pada widget ini anda dapat membuat text standar atau text custom yang dapat disesuaikan style nya
+
+### Row
+Pada widget row anda dapat membuat ui yang berbaris ke kanan, sesuai dengan urutan pada children dari widget ini.
+
+### Column
+Pada widget column anda dapat membuat ui yang terususun kebawah sesuai dengan urutan pada children dari widget ini.
+
+Perhatikan bahwa pada flutter kita dapat membuat nested widget yang berarti sebuah row dapat memiliki beberapa child column atau sebuah column dapat memiliki child satu atau lebih row.
+
+### Container
+Container merupakan widget yang mempermudah untuk membuat sebuah kotak, yang dapat diberi style menggunakan BoxDecorator. Container juga dapat memiliki margin padding, uniknya lagi container dapat ditransform (rotasi dll) dengan menggunakan matriks.
+
+```dart
+import 'package:flutter/material.dart';
+
+class MyAppBar extends StatelessWidget {
+  MyAppBar({required this.title});
+
+  // Fields in a Widget subclass are always marked "final".
+
+  final Widget title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 56.0, // in logical pixels
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      decoration: BoxDecoration(color: Colors.blue[500]),
+      // Row is a horizontal, linear layout.
+      child: Row(
+        // <Widget> is the type of items in the list.
+        children: <Widget>[
+          IconButton(
+            icon: Icon(Icons.menu),
+            tooltip: 'Navigation menu',
+            onPressed: null, // null disables the button
+          ),
+          // Expanded expands its child
+          // to fill the available space.
+          Expanded(
+            child: title,
+          ),
+          IconButton(
+            icon: Icon(Icons.search),
+            tooltip: 'Search',
+            onPressed: null,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MyScaffold extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Material is a conceptual piece
+    // of paper on which the UI appears.
+    return Material(
+      // Column is a vertical, linear layout.
+      child: Column(
+        children: <Widget>[
+          MyAppBar(
+            title: Text(
+              'Example title',
+              style: Theme.of(context) //
+                  .primaryTextTheme
+                  .headline6,
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: Text('Hello, world!'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(
+    title: 'My app', // used by the OS task switcher
+    home: SafeArea(
+      child: MyScaffold(),
+    ),
+  ));
+}
+```
 
 ## Material Component
 
