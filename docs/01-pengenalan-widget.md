@@ -63,6 +63,8 @@ Perhatikan bahwa pada flutter kita dapat membuat nested widget yang berarti sebu
 ### Container
 Container merupakan widget yang mempermudah untuk membuat sebuah kotak, yang dapat diberi style menggunakan BoxDecorator. Container juga dapat memiliki margin padding, uniknya lagi container dapat ditransform (rotasi dll) dengan menggunakan matriks.
 
+## Contoh Project
+
 ```dart
 import 'package:flutter/material.dart';
 
@@ -142,6 +144,102 @@ void main() {
 }
 ```
 
+Golden rule ngoding flutter adalah ***Semua yang ada di layar adalah widget*** dan Root Widget ada di function ***runApp*** jadi ketika ada kode program di widget periksalah ui nya dan cek function runApp sebelum memeriksa bagian yang lain.
+
+
+### Cek Function Main
+
+```dart
+void main() {
+  runApp(MaterialApp(
+    title: 'My app', // used by the OS task switcher
+    home: SafeArea(
+      child: MyScaffold(),
+    ),
+  ));
+}
+```
+
+Di function ini kita dapat menemukan bahwa root widget nya adalah MaterialApp dimana material app mempunyai properties title dan home, di properties home berisi widget SafeArea dan di child dari SafeArea ada widget lagi yaitu MyScaffold.
+
+Dari sini dapat dilihat satu widget utama mempunyai satu anak dan satu cucu. Ingat lagi bahwa widget di flutter dapat berupa widget bawaan dari flutter dan widget custom yang kita definisikan sendiri SafeArea adalah widget bawaan dan MyScaffold adalah widget custom.
+
+### Cek Class MyScaffold
+
+```dart
+class MyScaffold extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Material is a conceptual piece
+    // of paper on which the UI appears.
+    return Material(
+      // Column is a vertical, linear layout.
+      child: Column(
+        children: <Widget>[
+          MyAppBar(
+            title: Text(
+              'Example title',
+              style: Theme.of(context) //
+                  .primaryTextTheme
+                  .headline6,
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: Text('Hello, world!'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+
+Perhatikan class MyScaffold, kelas ini dibuat sesuai dengan aturan pembuatan sebuah widget yaitu merupakan class yang extend ke StatelessWidget atau StatefullWidget dan mengoverride function build.
+
+### Cek Class MyAppBar
+
+```dart
+
+class MyAppBar extends StatelessWidget {
+  MyAppBar({required this.title});
+
+  // Fields in a Widget subclass are always marked "final".
+
+  final Widget title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 56.0, // in logical pixels
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      decoration: BoxDecoration(color: Colors.blue[500]),
+      // Row is a horizontal, linear layout.
+      child: Row(
+        // <Widget> is the type of items in the list.
+        children: <Widget>[
+          IconButton(
+            icon: Icon(Icons.menu),
+            tooltip: 'Navigation menu',
+            onPressed: null, // null disables the button
+          ),
+          // Expanded expands its child
+          // to fill the available space.
+          Expanded(
+            child: title,
+          ),
+          IconButton(
+            icon: Icon(Icons.search),
+            tooltip: 'Search',
+            onPressed: null,
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
 ## Material Component
 
 ## Gesture 
