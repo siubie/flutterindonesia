@@ -50,7 +50,383 @@ Untuk membuat sebuah widget baru caranya sangat sederhana cukup dengan extend St
 Flutter sudah menyediakan banyak widget basic yang dapat anda gunakan untuk membuat UI yang unik. Dari sekian banyak widget ada beberapa widget yang sering digunakan antara lain: 
 
 ### Text
-Pada widget ini anda dapat membuat text standar atau text custom yang dapat disesuaikan style nya
+Pada widget ini anda dapat membuat text standar atau text custom yang dapat disesuaikan style nya, Untuk membuat Text kita menggunakan widget Text(). Contoh pembuatan widget text dapat dilihat pada kode program berikut.
+
+```dart
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Demo Text"),
+        ),
+        body: Center(
+          child: Text("Hello World"),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+```
+
+#### Font Size
+Untuk mengatur font size dapat dilakukan dengan menambahkan style pada Text widget, perhatikan kode program berikut ini untuk menambahkan style.
+
+```dart
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Demo Text",
+            // highlight-next-line
+            style: TextStyle(fontSize: 40),
+          ),
+        ),
+        body: Center(
+          child: Text(
+            "Hello World",
+            // highlight-next-line
+            style: TextStyle(fontSize: 40),
+          ),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+```
+#### Font Weight 
+Untuk mengatur font weight kita dapat menggunakan option fontWeight pada widget TextStyle
+
+```dart
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Demo Text",
+          ),
+        ),
+        body: Center(
+          child: Text(
+            "Hello World Tes",
+            style: TextStyle(
+              fontSize: 40,
+            // highlight-next-line
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+```
+#### Font Color 
+Text widget juga dapat diberikan warna sesuai kebutuhan kita dengan menambahkan option color pada TextStyle nya.
+
+```dart
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Demo Text",
+          ),
+        ),
+        body: Center(
+          child: Text(
+            "Hello World Tes",
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.w600,
+              // highlight-next-line
+              color: Colors.deepPurple,
+            ),
+          ),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+```
+#### Background Color
+Text Widget juga dapat diberi background color.
+
+```dart
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Demo Text",
+          ),
+        ),
+        body: Center(
+          child: Text(
+            "Hello World Tes",
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.w600,
+              color: Colors.deepPurple,
+              // highlight-next-line
+              backgroundColor: Colors.greenAccent,
+            ),
+          ),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+```
+#### Font Style 
+Font style yang ada di flutter dapat digunakan untuk membuat Text yang italic
+
+```dart
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Demo Text",
+          ),
+        ),
+        body: Center(
+          child: Text(
+            "Hello World Tes",
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.w600,
+              color: Colors.deepPurple,
+              backgroundColor: Colors.greenAccent,
+              // highlight-next-line
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+```
+#### Letter Spacing
+Spacing antar kata dan huruf di TextWidget juga dapat di atur jaraknya agar sesuai dengan kebutuhan.
+
+```dart
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Demo Text",
+          ),
+        ),
+        body: Center(
+          child: Text(
+            "Hello World Tes",
+            style: TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.w600,
+                color: Colors.deepPurple,
+                backgroundColor: Colors.greenAccent,
+                fontStyle: FontStyle.italic,
+                // highlight-next-line
+                letterSpacing: 5,
+                // highlight-next-line
+                wordSpacing: 5,
+                ),
+          ),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+```
+Catatan Tentang Line Height [Line Height](https://stackoverflow.com/questions/58156806/how-do-set-text-line-height-in-flutter)
+
+#### Custom Font
+Untuk menambahkan custom font cukup dengan membuat folder baru di folder project flutter, tidak ada penempatan atau rule khusus untuk penamaan folder namun demikian untuk membuat project lebih rapi dan mudah dibaca semua asset akan disimpan di folder assets. Untuk mencoba menambahkan font download lah 2 font berikut ini [Baskerville](https://www.dafontfree.net/freefonts-baskerville-regular-f114463.htm) dan [Ubuntu Light](https://fonts2u.com/ubuntu-light.font)
+
+Setelah download simpanlah file tersebut di dalam folder assets/fonts , nanti nya kita juga akan menggunakan folder assets ini untuk menyimpan gambar
+
+![Folder Asset](/img/asset_folder.png)
+
+```dart
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Demo Text",
+          ),
+        ),
+        body: Center(
+          child: Text(
+            "Hello World Tes",
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.w600,
+              color: Colors.deepPurple,
+              backgroundColor: Colors.greenAccent,
+                // highlight-next-line
+              fontStyle: FontStyle.normal,
+                // highlight-next-line
+              fontFamily: 'Baskerville',
+            ),
+          ),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+```
+#### Global Theme
+Global theme ini sama seperti css, dia akan mempermudah kita dalam melakukan styling terhadap text yang ada didalam aplikasi. Dengan membuat theme styling berada pada satu tempat kita akan jauh lebih mudah dalam memaintain styling text yang ada di aplikasi yang dibuat.
+
+Untuk menambahkan theme baru dapat dilakukan dengan menambahkan widget ThemeData ke MaterialApp.
+
+Layout untuk case study [Simple Product Layout](https://www.sketchappsources.com/free-source/4663-simple-product-cards-sketch-freebie-resource.html)
+
+```dart
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: 'Baskerville',
+        textTheme: TextTheme(
+          headline1: TextStyle(fontSize: 30),
+          headline2: TextStyle(fontSize: 30, color: Color(0xff112134)),
+          bodyText1: TextStyle(
+            fontFamily: 'Ubuntu',
+            fontWeight: FontWeight.w300,
+            fontSize: 14,
+            height: 1.8,
+          ),
+        ),
+      ),
+      home: Home(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Demo Text",
+          ),
+        ),
+        body: Container(
+          padding: EdgeInsets.all(8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "New Modern Vase",
+                style: Theme.of(context).textTheme.headline1,
+              ),
+              Text(
+                "Studiopepe for Atipico",
+                style: Theme.of(context).textTheme.headline2,
+              ),
+              Text(
+                "Italy is the stronghold of the creative designer. Founded in 2006 by Arianna Lelli Miami and Chiara Di Pinto ...",
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+```
+Sumber tulisan untuk pelajaran ini :
+1. [Medium Beginners Guide To Text Sytling](https://medium.com/flutter-community/beginners-guide-to-text-styling-in-flutter-3939085d6607)
+
+2. [Mastering Styled Text In Flutter](https://pusher.com/tutorials/styled-text-flutter)
+
+3. [Flutter Dev](https://flutter.dev/docs/development/ui/widgets-intro)
+
+Repository Github untuk codingan ini ada di [Github Repo](https://github.com/siubie/Flutter-Series-Text-Widget) ada 8 branch silahkan di clone dan di checkout per step. Semangat Ngoding !!
 
 ### Row
 Pada widget row anda dapat membuat ui yang berbaris ke kanan, sesuai dengan urutan pada children dari widget ini.
